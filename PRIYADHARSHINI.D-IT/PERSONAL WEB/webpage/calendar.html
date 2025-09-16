@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendar - Priyadharshini</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Priya's Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="interests.html">Interests</a></li>
+          <li class="nav-item"><a class="nav-link active" href="calendar.html">Calendar</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="container my-5" data-aos="fade-up">
+    <h2 class="text-center mb-4">My Calendar</h2>
+    <div class="d-flex justify-content-center">
+      <div class="calendar p-4 shadow rounded bg-light" style="max-width: 400px; width: 100%;">
+        <input type="month" class="form-control mb-3" id="monthPicker" />
+        <table class="table table-bordered text-center">
+          <thead class="table-secondary">
+            <tr>
+              <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+            </tr>
+          </thead>
+          <tbody id="calendarBody">
+   
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center p-3 mt-5">
+    <p>&copy; 2025 Priyadharshini Dhanasekaran | All Rights Reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const monthPicker = document.getElementById('monthPicker');
+    const calendarBody = document.getElementById('calendarBody');
+
+    // Initialize with current month
+    let today = new Date();
+    monthPicker.value = today.toISOString().substring(0, 7);
+
+    function generateCalendar(year, month) {
+      calendarBody.innerHTML = '';
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      let startDay = firstDay.getDay();
+      let totalDays = lastDay.getDate();
+
+      let date = 1;
+      for (let i = 0; i < 6; i++) { 
+        let row = document.createElement('tr');
+        for (let j = 0; j < 7; j++) {
+          let cell = document.createElement('td');
+          if (i === 0 && j < startDay) {
+            cell.innerHTML = '';
+          } else if (date > totalDays) {
+            cell.innerHTML = '';
+          } else {
+            cell.innerHTML = date;
+            if (
+              year === today.getFullYear() &&
+              month === today.getMonth() &&
+              date === today.getDate()
+            ) {
+              cell.classList.add('table-primary');
+            }
+
+            date++;
+          }
+          row.appendChild(cell);
+        }
+        calendarBody.appendChild(row);
+      }
+    }
+    generateCalendar(today.getFullYear(), today.getMonth());
+
+    monthPicker.addEventListener('change', () => {
+      const [year, month] = monthPicker.value.split('-').map(Number);
+      generateCalendar(year, month - 1);
+    });
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>

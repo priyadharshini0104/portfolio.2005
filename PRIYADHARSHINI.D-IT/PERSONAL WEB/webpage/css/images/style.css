@@ -1,0 +1,164 @@
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #99bba4, #99bba4); /* clean grey + mint */
+  color: #2c3e50; /* dark navy for readability */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1 {
+  color: #000000; /* black for welcome text */
+  font-weight: bold;
+}
+
+h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #16a085; /* teal accent for subheadings */
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, #2c3e50, #34495e); /* modern dark gradient */
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ffffff !important; /* white brand text */
+}
+
+.navbar-nav .nav-link {
+  margin-right: 10px;
+  color: #ecf0f1 !important; /* light grey links */
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #f39c12 !important; /* golden hover */
+}
+/* Fixed top-right navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: auto;
+  width: auto; /* only content width */
+  background: linear-gradient(135deg, #2c3e50, #34495e); /* dark gradient */
+  padding: 8px 20px;
+  border-radius: 0 0 0 10px; /* small rounded corner bottom-left */
+  z-index: 1000;
+}
+
+/* Section Title */
+section h2 {
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #16a085; /* teal underline */
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+/* Cards & Content Boxes */
+.shadow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.shadow:hover {
+  transform: translateY(-5px);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #16a085;
+  border-color: #16a085;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #138d75;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: #ecf0f1;
+  font-size: 0.85rem;
+  padding: 8px 0;
+  text-align: center;
+}
+
+/* Form Styling */
+form .form-control {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+form .form-control:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 0 0.15rem rgba(22, 160, 133, 0.25);
+}
+
+form button {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Gallery */
+.gallery-img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(22, 160, 133, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #16a085;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+}
+
+.scroll-top:hover {
+  background-color: #138d75;
+}
